@@ -1,0 +1,4 @@
+47 in total, 
+have 42 so far
+strrchr
+lstmap
