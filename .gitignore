@@ -54,3 +54,6 @@ dkms.conf
 # others
 .vscode
 *.md
+client
+server
+.DS_Store
