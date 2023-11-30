@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:20:15 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 12:24:04 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 13:21:05 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	receive_char(int signal)
 	if (signal == SIGUSR1)
 		i |= (0x01 << bit);
 	bit++;
-	if (bit == 8)
+	if (bit == 32)
 	{
 		ft_printf("%c", i);
 		bit = 0;
@@ -40,7 +40,7 @@ int	main(int argc, char **argv)
 	}
 	pid = getpid();
 	ft_printf("%d\n", pid);
-	while (argc == 1)
+	while (1)
 	{
 		signal(SIGUSR1, receive_char);
 		signal(SIGUSR2, receive_char);
