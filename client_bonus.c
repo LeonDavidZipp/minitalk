@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:18:06 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 16:14:26 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 16:45:23 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	send_null(int pid)
 	}
 }
 
-static void	acknowledge(int signal)
+static void	server_acknowledge(int signal)
 {
 	(void)signal;
 	write(1, "server received message\n", 24);
@@ -61,8 +61,8 @@ int	main(int argc, char **argv)
 		send_char(ft_atoi(argv[1]), *argv[2]);
 		argv[2]++;
 	}
-	signal(SIGUSR1, acknowledge);
-	signal(SIGUSR2, acknowledge);
+	signal(SIGUSR1, server_acknowledge);
+	signal(SIGUSR2, server_acknowledge);
 	send_null(ft_atoi(argv[1]));
 	while (1)
 		pause();
