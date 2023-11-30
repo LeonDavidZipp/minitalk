@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lzipp <lzipp@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:20:15 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/24 11:27:56 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 11:57:56 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	bit_to_char(int signal)
+static void	receive_chars(int signal)
 {
 	static int	bit;
 	static int	i;
@@ -34,15 +34,15 @@ int	main(int argc, char **argv)
 
 	if (argc != 1)
 	{
-		ft_printf("Error\n");
+		write(1, "Error\n", 6);
 		return (1);
 	}
 	pid = getpid();
 	ft_printf("%c", pid);
 	while (argc == 1)
 	{
-		signal(SIGUSR1, bit_to_char);
-		signal(SIGUSR2, bit_to_char);
+		signal(SIGUSR1, receive_chars);
+		signal(SIGUSR2, receive_chars);
 		pause();
 	}
 	return (0);
