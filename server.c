@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:20:15 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 13:34:35 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 15:21:53 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ static void	receive_char(int signal, siginfo_t *info, void *context)
 	static int	i;
 
 	(void)context;
-	(void)info;
-	// ft_printf("Received signal %d from process %d\n", signal, info->si_pid);
 	if (signal == SIGUSR1)
 		i |= (0x01 << bit);
 	bit++;
 	if (bit == 32)
 	{
-		ft_printf("%c", i);
+		if (i != 0)
+			ft_printf("%c", i);
+		else
+			kill(info->si_pid, SIGUSR1);
 		bit = 0;
 		i = 0;
 	}
@@ -46,18 +47,9 @@ int	main(int argc, char **argv)
 	ft_printf("%d\n", pid);
 	act.sa_sigaction = receive_char;
 	act.sa_flags = SA_SIGINFO;
-	
-	// while (1)
-	// {
-	// 	signal(SIGUSR1, receive_char);
-	// 	signal(SIGUSR2, receive_char);
-	// 	pause();
-	// }
+	sigaction(SIGUSR1, &act, NULL);
+	sigaction(SIGUSR2, &act, NULL);
 	while (1)
-	{
-		sigaction(SIGUSR1, &act, NULL);
-		sigaction(SIGUSR2, &act, NULL);
 		pause();
-	}
 	return (0);
 }
