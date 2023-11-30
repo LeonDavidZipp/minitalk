@@ -6,7 +6,7 @@
 #    By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 09:34:03 by lzipp             #+#    #+#              #
-#    Updated: 2023/11/30 12:22:29 by lzipp            ###   ########.fr        #
+#    Updated: 2023/11/30 16:29:32 by lzipp            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,9 +32,9 @@ CC		:= cc
 
 all: $(CLIENTNAME) $(SERVERNAME)
 
-# server: $(SERVERNAME)
+bonus: all
 
-# client: $(CLIENTNAME)
+cm: all clean
 
 lib:
 	make -C ./lib
