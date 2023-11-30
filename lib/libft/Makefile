@@ -6,7 +6,7 @@
 #    By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/04 19:14:44 by lzipp             #+#    #+#              #
-#    Updated: 2023/10/13 13:34:57 by lzipp            ###   ########.fr        #
+#    Updated: 2023/11/30 16:53:50 by lzipp            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,6 @@ ft_lstclear_bonus.c\
 ft_lstdelone_bonus.c\
 ft_lstiter_bonus.c\
 ft_lstlast_bonus.c\
-ft_lstmap_bonus.c\
 ft_lstsize_bonus.c\
 ft_lstnew_bonus.c\
 
