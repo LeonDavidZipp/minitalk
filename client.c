@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:18:06 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 16:11:51 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 16:14:26 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	send_null(int pid)
 static void	acknowledge(int signal)
 {
 	(void)signal;
-	ft_printf("server received message\n");
+	write(1, "server received message\n", 24);
 	exit(0);
 }
 
@@ -52,8 +52,8 @@ int	main(int argc, char **argv)
 {
 	if (argc != 3)
 	{
-		ft_printf("Error: Wrong number of arguments\n");
-		ft_printf("Usage: ./client [server PID] [message]\n");
+		write(2, "Error: Wrong number of arguments\n", 33);
+		write(2, "Usage: ./client [server PID] [message]\n", 39);
 		return (1);
 	}
 	while (*argv[2])
