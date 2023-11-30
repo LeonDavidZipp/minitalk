@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:18:06 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 13:21:11 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 13:21:30 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ static void	send_char(int pid, char c)
 	int	bit;
 
 	bit = 0;
-	// while (bit < 8) //ascii
-	while (bit < 32) //unicode
+	while (bit < 32)
 	{
 		if (c & (0x01 << bit))
 			kill(pid, SIGUSR1);
