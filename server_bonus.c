@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:20:15 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 15:21:53 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 17:22:09 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	receive_char(int signal, siginfo_t *info, void *context)
+static void	handle_receive(int signal, siginfo_t *info, void *context)
 {
 	static int	bit;
 	static int	i;
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 	}
 	pid = getpid();
 	ft_printf("%d\n", pid);
-	act.sa_sigaction = receive_char;
+	act.sa_sigaction = handle_receive;
 	act.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &act, NULL);
 	sigaction(SIGUSR2, &act, NULL);
