@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:18:06 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 15:22:32 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 16:11:51 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	main(int argc, char **argv)
 	if (argc != 3)
 	{
 		ft_printf("Error: Wrong number of arguments\n");
+		ft_printf("Usage: ./client [server PID] [message]\n");
 		return (1);
 	}
 	while (*argv[2])
