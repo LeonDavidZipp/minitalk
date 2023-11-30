@@ -6,13 +6,13 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:20:15 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 11:57:56 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 12:24:04 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-static void	receive_chars(int signal)
+static void	receive_char(int signal)
 {
 	static int	bit;
 	static int	i;
@@ -30,19 +30,20 @@ static void	receive_chars(int signal)
 
 int	main(int argc, char **argv)
 {
-	int		pid;
+	int			pid;
 
+	(void)argv;
 	if (argc != 1)
 	{
-		write(1, "Error\n", 6);
+		ft_printf("Error\n");
 		return (1);
 	}
 	pid = getpid();
-	ft_printf("%c", pid);
+	ft_printf("%d\n", pid);
 	while (argc == 1)
 	{
-		signal(SIGUSR1, receive_chars);
-		signal(SIGUSR2, receive_chars);
+		signal(SIGUSR1, receive_char);
+		signal(SIGUSR2, receive_char);
 		pause();
 	}
 	return (0);

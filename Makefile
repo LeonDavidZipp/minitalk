@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lzipp <lzipp@student.42heilbronn.de>       +#+  +:+       +#+         #
+#    By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 09:34:03 by lzipp             #+#    #+#              #
-#    Updated: 2023/11/24 09:34:46 by lzipp            ###   ########.fr        #
+#    Updated: 2023/11/30 12:22:29 by lzipp            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,17 +20,21 @@ HEADERS	:= -I ./include
 
 LIB := ./lib/libftprintf.a
 
-CLIENTSRCS	:=  client.c
+CLIENTSRC	:=  client.c
 
-SERVERSRCS	:=  server.c
+SERVERSRC	:=  server.c
 
-CLIENTOBJS	:= ${CLIENTSRCS:.c=.o}
+CLIENTOBJS	:= ${CLIENTSRC:.c=.o}
 
-SERVEROBJS	:= ${SERVERSRCS:.c=.o}
+SERVEROBJS	:= ${SERVERSRC:.c=.o}
 
 CC		:= cc
 
 all: $(CLIENTNAME) $(SERVERNAME)
+
+# server: $(SERVERNAME)
+
+# client: $(CLIENTNAME)
 
 lib:
 	make -C ./lib
