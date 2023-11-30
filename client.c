@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:18:06 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 13:21:30 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/11/30 13:40:14 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ static void	send_char(int pid, char c)
 	}
 }
 
+static void acknowledge(int signal)
+{
+	;
+}
+
 int	main(int argc, char **argv)
 {
 	int		pid;
@@ -42,6 +47,11 @@ int	main(int argc, char **argv)
 	{
 		send_char(ft_atoi(argv[1]), *argv[2]);
 		argv[2]++;
+	}
+	while (1)
+	{
+		signal(SIGUSR1, acknowledge);
+		pause();
 	}
 	return (0);
 }
