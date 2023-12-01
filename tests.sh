@@ -4,7 +4,7 @@
 #start the server, then run everything below in a new terminal
 #run this script in may terminals simultaneously to check if server handles correctly
 # Replace with your server's PID
-server_pid=34794
+server_pid=86202
 make cm
 echo "Correct number of args."
 # Test cases

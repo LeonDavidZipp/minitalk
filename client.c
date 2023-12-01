@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:18:06 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 16:45:42 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/12/01 11:03:01 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	send_char(int pid, char c)
 		else
 			kill(pid, SIGUSR2);
 		bit++;
-		usleep(42);
+		usleep(SLEEP_TIME);
 	}
 }
 
@@ -37,7 +37,7 @@ static void	send_null(int pid)
 	{
 		kill(pid, SIGUSR2);
 		bit++;
-		usleep(42);
+		usleep(SLEEP_TIME);
 	}
 }
 
