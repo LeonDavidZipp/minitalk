@@ -6,7 +6,7 @@
 #    By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/24 09:34:03 by lzipp             #+#    #+#              #
-#    Updated: 2023/11/30 16:29:32 by lzipp            ###   ########.fr        #
+#    Updated: 2023/12/01 10:03:58 by lzipp            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,20 +21,22 @@ HEADERS	:= -I ./include
 LIB := ./lib/libftprintf.a
 
 CLIENTSRC	:=  client.c
-
 SERVERSRC	:=  server.c
-
 CLIENTOBJS	:= ${CLIENTSRC:.c=.o}
-
 SERVEROBJS	:= ${SERVERSRC:.c=.o}
+
+BONUSCLIENTSRC	:=  client_bonus.c
+BONUSSERVERSRC	:=  server_bonus.c
+BONUSCLIENTOBJS	:= ${BONUSCLIENTSRC:.c=.o}
+BONUSSERVEROBJS	:= ${BONUSSERVERSRC:.c=.o}
 
 CC		:= cc
 
 all: $(CLIENTNAME) $(SERVERNAME)
 
-bonus: all
+bonus: b1 b2
 
-cm: all clean
+cm: bonus clean
 
 lib:
 	make -C ./lib
@@ -44,13 +46,18 @@ lib:
 
 $(CLIENTNAME): $(CLIENTOBJS) lib
 	@$(CC) $(CLIENTOBJS) $(LIB) $(HEADERS) -o $(CLIENTNAME)
-
 $(SERVERNAME): $(SERVEROBJS) lib
 	@$(CC) $(SERVEROBJS) $(LIB) $(HEADERS) -o $(SERVERNAME)
+	
+b1: $(BONUSCLIENTOBJS) lib
+	@$(CC) $(BONUSCLIENTOBJS) $(LIB) $(HEADERS) -o $(CLIENTNAME)
+b2: $(BONUSSERVEROBJS) lib
+	@$(CC) $(BONUSSERVEROBJS) $(LIB) $(HEADERS) -o $(SERVERNAME)
 
 clean:
 	make -C ./lib clean
 	rm -rf $(CLIENTOBJS) $(SERVEROBJS)
+	rm -rf $(BONUSCLIENTOBJS) $(BONUSSERVEROBJS)
 
 fclean: clean
 	make -C ./lib fclean

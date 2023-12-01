@@ -1,0 +1,50 @@
+CC=cc
+CFLAGS=-Wall -Wextra -Werror
+NAME=minitalk
+SERVER=server
+PATH_SERVER=
+SOURCES_SERVER=server.c
+SOURCES_SERVER := $(SOURCES_SERVER:%=$(PATH_SERVER)%)
+OBJECTS_SERVER=$(SOURCES_SERVER:.c=.o)
+CLIENT=client
+PATH_CLIENT=
+SOURCES_CLIENT=client.c
+SOURCES_CLIENT := $(SOURCES_CLIENT:%=$(PATH_CLIENT)%)
+OBJECTS_CLIENT := $(SOURCES_CLIENT:.c=.o)
+SERVER_BONUS=server_bonus
+SOURCES_SERVER_BONUS=server_bonus.c
+OBJECTS_SERVER_BONUS=$(SOURCES_SERVER_BONUS:.c=.o)
+CLIENT_BONUS=client_bonus
+SOURCES_CLIENT_BONUS=client_bonus.c
+OBJECTS_CLIENT_BONUS := $(SOURCES_CLIENT_BONUS:.c=.o)
+LIBFT_DIR=./lib/libft
+LIBFT=./lib/libft/libft.a
+LIBFT_PATH=$(LIBFT_DIR)/
+all: $(NAME)
+$(NAME): $(SERVER) $(CLIENT)
+$(SERVER):  $(OBJECTS_SERVER)
+	$(CC)  $(OBJECTS_SERVER) -o $(SERVER) $(CFLAGS)
+$(CLIENT):  $(OBJECTS_CLIENT)
+	$(CC)  $(OBJECTS_CLIENT) -o $(CLIENT) $(CFLAGS)
+bonus: $(SERVER_BONUS) $(CLIENT_BONUS)
+$(SERVER_BONUS):  $(OBJECTS_SERVER_BONUS)
+	$(CC)  $(OBJECTS_SERVER_BONUS) -o $(SERVER_BONUS) $(CFLAGS)
+$(CLIENT_BONUS):  $(OBJECTS_CLIENT_BONUS)
+	$(CC)  $(OBJECTS_CLIENT_BONUS) -o $(CLIENT_BONUS) $(CFLAGS)
+:
+	$(MAKE) -C $(LIBFT_DIR)
+	cp $(LIBFT_PATH) 
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+clean:
+	rm -f $(OBJECTS_SERVER) $(OBJECTS_CLIENT) $(OBJECTS_SERVER_BONUS) $(OBJECTS_CLIENT_BONUS)
+	$(MAKE) -C $(LIBFT_DIR) clean
+fclean: clean
+	rm -f $(SERVER) $(CLIENT)  $(SERVER_BONUS) $(CLIENT_BONUS)
+	rm -f a.out
+	$(MAKE) -C $(LIBFT_DIR) fclean
+re: fclean all
+example_generator:
+	git clone https://github.com/Partttyyy/42_minitalk.git repo
+	cp repo/generator.py generator.py
+	rm -rf repo
