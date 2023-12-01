@@ -6,7 +6,7 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:36:25 by lzipp             #+#    #+#             */
-/*   Updated: 2023/12/01 11:14:37 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/12/01 11:15:49 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINITALK_H
 
 # ifndef SLEEP_TIME
-#  define SLEEP_TIME 50	
+#  define SLEEP_TIME 50
 # endif
 
 # include "lib/libft/libft.h"
