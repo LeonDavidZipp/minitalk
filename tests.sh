@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#always use single quotes!
 #start the server, then run everything below in a new terminal
 #run this script in may terminals simultaneously to check if server handles correctly
 # Replace with your server's PID
