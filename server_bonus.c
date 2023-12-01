@@ -6,11 +6,11 @@
 /*   By: lzipp <lzipp@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:20:15 by lzipp             #+#    #+#             */
-/*   Updated: 2023/11/30 17:22:09 by lzipp            ###   ########.fr       */
+/*   Updated: 2023/12/01 10:32:14 by lzipp            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 static void	handle_receive(int signal, siginfo_t *info, void *context)
 {
